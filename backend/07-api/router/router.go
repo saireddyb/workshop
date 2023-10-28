@@ -17,5 +17,5 @@ func moviesRouter(router chi.Router){
 	router.Get("/",functions.ListMovies)
 	router.Get("/{id}",functions.GetMovie)
 	router.Post("/{id}", functions.UpdateMovie)
-	router.Delete("/{id}", functions.DeleteMovie)
+	router.Post("/add", functions.AddMovie)
 }

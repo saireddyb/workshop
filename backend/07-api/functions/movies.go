@@ -2,6 +2,7 @@ package functions
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strconv"
 	"workshop/model"
@@ -37,9 +38,11 @@ func GetMovie(w http.ResponseWriter, r *http.Request) {
 
 func UpdateMovie(w http.ResponseWriter, r *http.Request){
 	id, _ := strconv.Atoi(chi.URLParam(r, "id"))
+	var body model.Movies
+	_ = json.NewDecoder(r.Body).Decode(&body)
 	for index, movie := range movies {
 		if movie.Id == id {
-			movie.Watched = true
+			movie.Watched = body.Watched
 			movies[index] = movie
 			break
 		}
@@ -47,6 +50,20 @@ func UpdateMovie(w http.ResponseWriter, r *http.Request){
 	w.Write([]byte("Movie is now watched"))
 }
 
-func DeleteMovie(w http.ResponseWriter, r *http.Request){
-	w.Write([]byte("Delete movie by id"))
+func AddMovie(w http.ResponseWriter, r *http.Request){
+	var newMovie model.Movies
+	_ = json.NewDecoder(r.Body).Decode(&newMovie)
+
+	if(newMovie.Id == 0 || newMovie.Name == "") {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+	for _, movie := range movies {
+		if newMovie.Id == movie.Id {
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+	}
+	movies = append(movies, newMovie)
+	fmt.Print(newMovie)
 }

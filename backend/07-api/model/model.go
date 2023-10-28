@@ -7,5 +7,5 @@ type Movies struct {
 	Year int 
 	ImgUrl string 
 	Category string 
-	Watched bool
+	Watched bool 
 }
