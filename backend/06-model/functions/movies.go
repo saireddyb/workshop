@@ -6,7 +6,7 @@ import (
 	"workshop/model"
 )
 
-
+// creating a movies variable with values from our Movies model.
 var movies = []model.Movies{
 	{Id: 1, Name: "KGF", Rating: 10, Year: 2018, ImgUrl: "somerandomurl", Category: "Action", Watched: true},
 	{Id: 2, Name: "KGF2", Rating: 8, Year: 2022, ImgUrl: "somerandomurl1", Category: "Action2", Watched: false},
@@ -27,6 +27,6 @@ func UpdateMovie(w http.ResponseWriter, r *http.Request){
 	w.Write([]byte("Update movie by id"))
 }
 
-func DeleteMovie(w http.ResponseWriter, r *http.Request){
-	w.Write([]byte("Delete movie by id"))
+func AddMovie(w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("Add a movie"))
 }

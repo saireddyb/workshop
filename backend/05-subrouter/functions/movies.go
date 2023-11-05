@@ -16,6 +16,6 @@ func UpdateMovie(w http.ResponseWriter, r *http.Request){
 	w.Write([]byte("Update movie by id"))
 }
 
-func DeleteMovie(w http.ResponseWriter, r *http.Request){
-	w.Write([]byte("Delete movie by id"))
+func AddMovie(w http.ResponseWriter, r *http.Request){
+	w.Write([]byte("Add a movie"))
 }

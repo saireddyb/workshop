@@ -8,8 +8,11 @@ import (
 )
 
 func main() {
+	// here we are creating chi router instance
 	router := chi.NewRouter()
+	// Adding a request logging middleware to the router.
 	router.Use(middleware.Logger)
+	// registering a function helloworld for the route path "/"
 	router.Get("/", helloWorld)
 	
 

@@ -5,14 +5,16 @@ import (
 )
 
 func main() {
+	// Register a function "helloworld" to handle requests ("/helloworld") URL path only.
 	http.HandleFunc("/helloworld", helloworld)
-	http.HandleFunc("/welcome", saireddy)
+	// similarly will route for /welcome url path only
+	http.HandleFunc("/welcome", welcome)
 	http.ListenAndServe(":3000",nil)
 }
 
 func helloworld(w http.ResponseWriter, r *http.Request){
 	w.Write([]byte("Hello worlds"))
 }
-func saireddy(w http.ResponseWriter, r *http.Request) {
+func welcome(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Weolcome to go lang"))
 }
