@@ -2,6 +2,7 @@ package functions
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 
@@ -27,4 +28,5 @@ func init() {
 	if err := redisClient.Ping(context.TODO()).Err(); err != nil {
 		log.Fatal("Error connecting to redis")
  	}
+	fmt.Println("Connected to Redis!")
 }

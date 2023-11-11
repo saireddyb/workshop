@@ -18,4 +18,5 @@ func moviesRouter(router chi.Router){
 	router.Get("/{id}",functions.GetMovie)
 	router.Post("/{id}", functions.UpdateMovie)
 	router.Post("/add", functions.AddMovie)
+	router.Get("/top10", functions.Top10)
 }
